@@ -16,7 +16,7 @@ using namespace std;
 
 //--Globals ---------------------------------------------------------------
 float angle=0, look_x, look_z=-1.5, eye_x, eye_z=30;  //Camera parameters
-GLuint txId[6];   //Texture ids
+GLuint txId[7];   //Texture ids
 GLUquadric *q; //allows round objects
 
 // ------boat animatio variables ------------
@@ -31,13 +31,17 @@ int boatFace = 90; //direction boat is facing in
 int guardTheta = 0; // angle for gaurd arm movement
 int movingIn = 1; //arm raising trigger
 
+//------------------helicopter animation variables-------------------
+int bladeTheta = 1; //angle for continuoes blade rotation
+float heliPos = -30.5; //position of helicopter on z axis
+int inLine = 0; //helicopter in line with player
 
 
 //------Function to load a texture in bmp format  ------------------------
 void loadTexture()
 {
     glEnable(GL_TEXTURE_2D);
-    glGenTextures(6, txId); 	// Create 6 texture ids
+    glGenTextures(7, txId); 	// Create 6 texture ids
 
     // Create a Texture object
     glBindTexture(GL_TEXTURE_2D, txId[0]);		//Use this texture
@@ -92,6 +96,15 @@ void loadTexture()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+
+    glBindTexture(GL_TEXTURE_2D, txId[6]);		//Use this texture
+    loadBMP("water.bmp");
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+
 
 }
 
@@ -432,15 +445,18 @@ void drawBoat()
 //water for boat animation
 void drawWater()
 {
-    glPushMatrix();
 
+    //glEnable(GL_TEXTURE_2D);
+    //glBindTexture(GL_TEXTURE_2D, txId[6]);
+
+    glPushMatrix();
         glColor3f(0, 0, 1);
 
         glBegin(GL_QUADS); // water
-            glVertex3f(-6.5, 0, 9.5);
-            glVertex3f(-6.5, 0, -9.5);
-            glVertex3f(6.5, 0, -9.5);
-            glVertex3f(6.5, 0, 9.5);
+            glTexCoord2f(1., 0.); glVertex3f(-6.5, 0, 9.5);
+            glTexCoord2f(1., 1.); glVertex3f(-6.5, 0, -9.5);
+            glTexCoord2f(0., 1.); glVertex3f(6.5, 0, -9.5);
+            glTexCoord2f(0., 0.); glVertex3f(6.5, 0, 9.5);
 
             glVertex3f(-6.5, 0, 9.5);
             glVertex3f(-6.5, -4, 9.5);
@@ -463,6 +479,7 @@ void drawWater()
         glPopMatrix();
 
     glPopMatrix();
+    //glDisable(GL_TEXTURE_2D);
 }
 
 // sail boat that races around boeys
@@ -576,6 +593,109 @@ void guardAnimation()
 
 }
 
+//draw helicopter blade that will continously rotate
+void drawBlade()
+{
+    glPushMatrix();
+
+        glPushMatrix();
+            glTranslatef(0, 0, 1.5);
+            glScalef(0.5, 0.2, 3);
+            glutSolidCube(1);
+        glPopMatrix();
+
+        glPushMatrix();
+            glTranslatef(0, 0, -1.5);
+            glScalef(0.5, 0.2, 3);
+            glutSolidCube(1);
+        glPopMatrix();
+
+        glPushMatrix();
+            glTranslatef(1.5, 0, 0);
+            glRotatef(90, 0, 1, 0);
+            glScalef(0.5, 0.2, 3);
+            glutSolidCube(1);
+        glPopMatrix();
+
+        glPushMatrix();
+            glTranslatef(-1.5, 0, 0);
+            glRotatef(90, 0, 1, 0);
+            glScalef(0.5, 0.2, 3);
+            glutSolidCube(1);
+        glPopMatrix();
+
+        glutSolidSphere(0.25, 30, 30);
+
+    glPopMatrix();
+
+}
+
+//draw helicopter body
+void drawHeli()
+{
+    glPushMatrix();
+
+        glPushMatrix();//blade support sphere
+            glTranslatef(-2.25, 0, 0);
+            glutSolidSphere(0.2, 30, 30);
+        glPopMatrix();
+
+        glPushMatrix(); //blade support
+            glTranslatef(-1, 0, 0);
+            glRotatef(-90, 0, 1, 0);
+            gluCylinder(q, 0.4, 0.2, 1.25, 30, 30);
+        glPopMatrix();
+
+        glPushMatrix(); //mast thing
+            glColor3f(1, 0, 0);
+            glTranslatef(0, 0.5, 0);
+            glRotatef(-90, 1, 0, 0);
+            gluCylinder(q, 0.3, 0.1, 0.75, 30, 30);
+        glPopMatrix();
+
+        glPushMatrix(); //cockpit
+            glColor3f(0, 0, 1);
+            glTranslatef(1, 0, 0);
+            glScalef(1.5, 1, 1);
+            glutSolidSphere(0.55, 30, 30);
+        glPopMatrix();
+
+        glPushMatrix(); //body
+            glColor3f(1, 0, 0);
+            glScalef(2, 1, 1);
+            glutSolidCube(1);
+        glPopMatrix();
+
+
+    glPopMatrix();
+}
+
+//helicopter that follows user
+void heliAnimation()
+{
+    glTranslatef(-13, 4, heliPos);
+    glPushMatrix();
+        drawHeli();
+
+        glPushMatrix(); //side blade mechanics
+            glTranslatef(-2.25, 0, 0.2);
+            glRotatef(-8, 0, 1, 0);
+            glRotatef(90, 1, 0, 0);
+            glRotatef(-bladeTheta, 0, 1, 0);
+            glScalef(0.25, 0.25, 0.25);
+            drawBlade();
+        glPopMatrix();
+
+        glPushMatrix(); //top blade mechanics
+            glTranslatef(0, 1.25, 0);
+            glRotatef(-bladeTheta, 0, 1, 0);
+            glScalef(0.75, 0.75, 0.75);
+            drawBlade();
+        glPopMatrix();
+
+    glPopMatrix();
+}
+
 //--Display: ---------------------------------------------------------------
 //--This is the main display module containing function calls for generating
 //--the scene.
@@ -603,6 +723,8 @@ void display()
     boatAnimation();
 
     guardAnimation();
+
+    heliAnimation();
 
 	glFlush();
 }
@@ -641,6 +763,12 @@ void special(int key, int x, int y)
     { //Move forward
         eye_x += 2 * (0.1*sin(angle));
         eye_z -= 2 * (0.1*cos(angle));
+    } else if(key == GLUT_KEY_PAGE_UP)
+    { //move negatively along z axis
+        eye_z -= 0.2;
+    } else if(key == GLUT_KEY_PAGE_DOWN)
+    { //move positively along z axis
+        eye_z += 0.2;
     }
 
     look_x = eye_x + 100*sin(angle);
@@ -720,6 +848,18 @@ void lowerArm()
     }
 }
 
+//move heli inline with player
+void moveHeli()
+{
+
+        if (eye_z > heliPos) {
+                heliPos += 0.1;
+        } else {
+                heliPos -= 0.1;
+        }
+
+}
+
 //select functions to run
 void callFunctions(int value)
 {
@@ -738,6 +878,15 @@ void callFunctions(int value)
     {
         lowerArm();
     }
+
+
+    if (eye_z < -30.5 && eye_z > -45) {
+
+        moveHeli();
+
+    }
+
+    bladeTheta += 20; //keep helicopter blades spinning
 
     glutPostRedisplay();
     glutTimerFunc(50, callFunctions, 0);
