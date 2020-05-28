@@ -1,0 +1,3 @@
+/home/cosc/student/fwm16/363/lab3/build-III_Yard-Desktop-Default/CMakeFiles/rebuild_cache.dir
+/home/cosc/student/fwm16/363/lab3/build-III_Yard-Desktop-Default/CMakeFiles/Yard.out.dir
+/home/cosc/student/fwm16/363/lab3/build-III_Yard-Desktop-Default/CMakeFiles/edit_cache.dir

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="lab3"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/cosc/student/fwm16/363/lab3/build-II_RailWagon-Desktop-Default"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/ninja -v all"/>
+					<CompileFile command="/usr/local/bin/ninja -v &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/ninja -v clean"/>
+					<DistClean command="/usr/local/bin/ninja -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/cosc/student/fwm16/363/lab3/build-II_RailWagon-Desktop-Default"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/ninja -v rebuild_cache"/>
+					<CompileFile command="/usr/local/bin/ninja -v &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/ninja -v clean"/>
+					<DistClean command="/usr/local/bin/ninja -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="RailWagon.out">
+				<Option output="/home/cosc/student/fwm16/363/lab3/build-II_RailWagon-Desktop-Default/RailWagon.out" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cosc/student/fwm16/363/lab3/build-II_RailWagon-Desktop-Default"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/local/bin/ninja -v RailWagon.out"/>
+					<CompileFile command="/usr/local/bin/ninja -v &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/ninja -v clean"/>
+					<DistClean command="/usr/local/bin/ninja -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="RailWagon.out/fast">
+				<Option output="/home/cosc/student/fwm16/363/lab3/build-II_RailWagon-Desktop-Default/RailWagon.out" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cosc/student/fwm16/363/lab3/build-II_RailWagon-Desktop-Default"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/local/bin/ninja -v RailWagon.out/fast"/>
+					<CompileFile command="/usr/local/bin/ninja -v &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/ninja -v clean"/>
+					<DistClean command="/usr/local/bin/ninja -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/cosc/student/fwm16/363/lab3/build-II_RailWagon-Desktop-Default"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/ninja -v edit_cache"/>
+					<CompileFile command="/usr/local/bin/ninja -v &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/ninja -v clean"/>
+					<DistClean command="/usr/local/bin/ninja -v clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/cosc/student/fwm16/363/lab3/II_RailWagon/RailWagon.cpp">
+			<Option target="RailWagon.out"/>
+		</Unit>
+		<Unit filename="/home/cosc/student/fwm16/363/lab3/II_RailWagon/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

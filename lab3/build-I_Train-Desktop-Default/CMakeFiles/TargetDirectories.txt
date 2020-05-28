@@ -1,0 +1,3 @@
+/home/cosc/student/fwm16/363/lab3/build-I_Train-Desktop-Default/CMakeFiles/rebuild_cache.dir
+/home/cosc/student/fwm16/363/lab3/build-I_Train-Desktop-Default/CMakeFiles/Train.out.dir
+/home/cosc/student/fwm16/363/lab3/build-I_Train-Desktop-Default/CMakeFiles/edit_cache.dir

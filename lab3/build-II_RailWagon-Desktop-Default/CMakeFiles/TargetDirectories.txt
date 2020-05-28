@@ -1,0 +1,3 @@
+/home/cosc/student/fwm16/363/lab3/build-II_RailWagon-Desktop-Default/CMakeFiles/rebuild_cache.dir
+/home/cosc/student/fwm16/363/lab3/build-II_RailWagon-Desktop-Default/CMakeFiles/RailWagon.out.dir
+/home/cosc/student/fwm16/363/lab3/build-II_RailWagon-Desktop-Default/CMakeFiles/edit_cache.dir
