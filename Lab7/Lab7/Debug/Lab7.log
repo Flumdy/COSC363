@@ -1,0 +1,25 @@
+﻿  RayTracer.cpp
+C:\Uni\Cosc\Labs\Lab7\Lab7\SceneObject.h(26,20): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Uni\Cosc\Labs\Lab7\Lab7\SceneObject.h(27,20): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Uni\Cosc\Labs\Lab7\Lab7\SceneObject.h(28,20): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Uni\Cosc\Labs\Lab7\Lab7\RayTracer.cpp(93,10): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Uni\Cosc\Labs\Lab7\Lab7\RayTracer.cpp(94,10): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Uni\Cosc\Labs\Lab7\Lab7\RayTracer.cpp(188,56): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Uni\Cosc\Labs\Lab7\Lab7\RayTracer.cpp(188,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Uni\Cosc\Labs\Lab7\Lab7\RayTracer.cpp(191,56): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Uni\Cosc\Labs\Lab7\Lab7\RayTracer.cpp(191,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Uni\Cosc\Labs\Lab7\Lab7\RayTracer.cpp(194,56): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Uni\Cosc\Labs\Lab7\Lab7\RayTracer.cpp(194,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Uni\Cosc\Labs\Lab7\Lab7\RayTracer.cpp(197,56): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Uni\Cosc\Labs\Lab7\Lab7\RayTracer.cpp(197,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Uni\Cosc\Labs\Lab7\Lab7\RayTracer.cpp(266,36): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Cosc\Labs\Lab7\Lab7\RayTracer.cpp(280,42): warning C4305: 'argument': truncation from 'double' to 'float'
+  Lab7.vcxproj -> C:\Uni\Cosc\Labs\Lab7\Debug\Lab7.exe
